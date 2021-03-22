@@ -15,12 +15,15 @@
 		4182BE8626089B0700B1E3ED /* CloneTwitterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BE8526089B0700B1E3ED /* CloneTwitterUITests.swift */; };
 		4182BEA326089D2300B1E3ED /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BEA226089D2300B1E3ED /* MainTabViewController.swift */; };
 		4182BEA826089DCF00B1E3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4182BEA726089DCF00B1E3ED /* Assets.xcassets */; };
-		4182BEB126089DE800B1E3ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BEB026089DE800B1E3ED /* Extensions.swift */; };
+		4182BEB126089DE800B1E3ED /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BEB026089DE800B1E3ED /* ViewExtensions.swift */; };
 		4182BEB626089E0100B1E3ED /* FeedControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BEB526089E0100B1E3ED /* FeedControllerViewController.swift */; };
 		4182BEBB26089E2000B1E3ED /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BEBA26089E2000B1E3ED /* ExploreController.swift */; };
 		4182BEC026089E2E00B1E3ED /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BEBF26089E2D00B1E3ED /* NotificationsController.swift */; };
 		4182BEC526089E3A00B1E3ED /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BEC426089E3A00B1E3ED /* MessagesController.swift */; };
 		4182BECB26089E7700B1E3ED /* UIProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BECA26089E7700B1E3ED /* UIProtocols.swift */; };
+		4182BED426092A1F00B1E3ED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BED326092A1F00B1E3ED /* LoginViewController.swift */; };
+		4182BED926092A2800B1E3ED /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BED826092A2800B1E3ED /* RegistrationViewController.swift */; };
+		4182BEDE26092BEF00B1E3ED /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182BEDD26092BEF00B1E3ED /* Components.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +58,15 @@
 		4182BE8726089B0700B1E3ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4182BEA226089D2300B1E3ED /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		4182BEA726089DCF00B1E3ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
-		4182BEB026089DE800B1E3ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4182BEB026089DE800B1E3ED /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		4182BEB526089E0100B1E3ED /* FeedControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedControllerViewController.swift; sourceTree = "<group>"; };
 		4182BEBA26089E2000B1E3ED /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		4182BEBF26089E2D00B1E3ED /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		4182BEC426089E3A00B1E3ED /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
 		4182BECA26089E7700B1E3ED /* UIProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProtocols.swift; sourceTree = "<group>"; };
+		4182BED326092A1F00B1E3ED /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4182BED826092A2800B1E3ED /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		4182BEDD26092BEF00B1E3ED /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 		4182BE9626089B2300B1E3ED /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4182BEDD26092BEF00B1E3ED /* Components.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 		4182BE9826089B2A00B1E3ED /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4182BED226092A0D00B1E3ED /* OnBoarding */,
 				4182BEA226089D2300B1E3ED /* MainTabViewController.swift */,
 				4182BEB526089E0100B1E3ED /* FeedControllerViewController.swift */,
 				4182BEBA26089E2000B1E3ED /* ExploreController.swift */,
@@ -197,7 +205,7 @@
 		4182BEAF26089DDD00B1E3ED /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4182BEB026089DE800B1E3ED /* Extensions.swift */,
+				4182BEB026089DE800B1E3ED /* ViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,6 +216,15 @@
 				4182BECA26089E7700B1E3ED /* UIProtocols.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4182BED226092A0D00B1E3ED /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				4182BED326092A1F00B1E3ED /* LoginViewController.swift */,
+				4182BED826092A2800B1E3ED /* RegistrationViewController.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,13 +358,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4182BE6426089B0500B1E3ED /* AppDelegate.swift in Sources */,
+				4182BEDE26092BEF00B1E3ED /* Components.swift in Sources */,
 				4182BECB26089E7700B1E3ED /* UIProtocols.swift in Sources */,
 				4182BE6626089B0500B1E3ED /* SceneDelegate.swift in Sources */,
+				4182BED926092A2800B1E3ED /* RegistrationViewController.swift in Sources */,
 				4182BEA326089D2300B1E3ED /* MainTabViewController.swift in Sources */,
-				4182BEB126089DE800B1E3ED /* Extensions.swift in Sources */,
+				4182BEB126089DE800B1E3ED /* ViewExtensions.swift in Sources */,
 				4182BEC026089E2E00B1E3ED /* NotificationsController.swift in Sources */,
 				4182BEB626089E0100B1E3ED /* FeedControllerViewController.swift in Sources */,
 				4182BEBB26089E2000B1E3ED /* ExploreController.swift in Sources */,
+				4182BED426092A1F00B1E3ED /* LoginViewController.swift in Sources */,
 				4182BEC526089E3A00B1E3ED /* MessagesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
