@@ -71,7 +71,14 @@ class LoginViewController: UIViewController {
     // MARK: Selectors
     
     @objc private func didTapLoginButton(){
-        print("Did login button tapped")
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        AuthManager.shared.login(username: email, email: email, password: password) { (loggedIn) in
+            if loggedIn {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @objc private func didTapDontHaveAccount(){
