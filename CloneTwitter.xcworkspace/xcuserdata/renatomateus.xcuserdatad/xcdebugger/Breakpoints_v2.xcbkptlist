@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4FA3F70C-C01D-4048-99C4-4F9DB9B57057"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "92253933-A155-44C0-9BB0-D411657CE006"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloneTwitter/Resources/Firebase/AuthManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "registerNewUser(with:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC97C5A2-776A-43AB-BC68-178B3CD3ED8D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloneTwitter/Resources/Firebase/AuthManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "login(username:email:password:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "249D67B4-D1E3-41FF-8750-670AAFEB7786"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloneTwitter/Resources/Firebase/StorageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "uploadImage(with:data:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "249D67B4-D1E3-41FF-8750-670AAFEB7786 - cdb76e26b2be287a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CloneTwitter.StoreManager.uploadImage(with: Swift.String, data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CloneTwitter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/renatomateus/Documents/ios-projects/CloneTwitter/CloneTwitter/Resources/Firebase/StorageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  uuid = "249D67B4-D1E3-41FF-8750-670AAFEB7786 - cdb76e26b2be287a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CloneTwitter.StoreManager.uploadImage(with: Swift.String, data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CloneTwitter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/renatomateus/Documents/ios-projects/CloneTwitter/CloneTwitter/Resources/Firebase/StorageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "346">
+               </Location>
+               <Location
+                  uuid = "249D67B4-D1E3-41FF-8750-670AAFEB7786 - 716441137b791b8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRStorageMetadata&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CloneTwitter.StoreManager.uploadImage(with: Swift.String, data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CloneTwitter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/renatomateus/Documents/ios-projects/CloneTwitter/CloneTwitter/Resources/Firebase/StorageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "62">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D769589C-9523-4B0E-B691-C853F7A974DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloneTwitter/Resources/Firebase/StorageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "uploadImage(with:data:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC0B6767-F9F2-4CB6-A1FF-4478934E0E50"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloneTwitter/Resources/Firebase/StorageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "uploadImage(with:data:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AC0B6767-F9F2-4CB6-A1FF-4478934E0E50 - 716441137b791b8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRStorageMetadata&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CloneTwitter.StoreManager.uploadImage(with: Swift.String, data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CloneTwitter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/renatomateus/Documents/ios-projects/CloneTwitter/CloneTwitter/Resources/Firebase/StorageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "78">
+               </Location>
+               <Location
+                  uuid = "AC0B6767-F9F2-4CB6-A1FF-4478934E0E50 - 4a2bba61efd20c67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.URL&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRStorageMetadata&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CloneTwitter.StoreManager.uploadImage(with: Swift.String, data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CloneTwitter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/renatomateus/Documents/ios-projects/CloneTwitter/CloneTwitter/Resources/Firebase/StorageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "185">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C2F4D50-EFC6-481C-9CFA-160A8F7F9417"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloneTwitter/Resources/Firebase/StorageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "uploadImage(with:data:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E942927D-0CDF-4CAA-87FA-36DFF3E9FDF5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloneTwitter/Resources/Firebase/StorageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "uploadImage(with:data:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

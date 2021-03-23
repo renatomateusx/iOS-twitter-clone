@@ -11,7 +11,7 @@ class RegistrationViewController: UIViewController {
     // MARK: Properties
     
     private let imagePicker = UIImagePickerController()
-
+    private var profileImage: UIImage?
     private let profileImageButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
@@ -67,7 +67,7 @@ class RegistrationViewController: UIViewController {
     
     private let registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Register", for: .normal)
         button.setTitleColor(.twitterBlue, for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
@@ -103,7 +103,20 @@ class RegistrationViewController: UIViewController {
     }
     
     @objc private func didTapRegisterButton(){
-        print("Did Tapped Register Button")
+        guard let profileImage = profileImage else { print("DEBUG: Please, select a profile image, its required"); return }
+        
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        guard let fullname = fullNameTextField.text else {return}
+        guard let username = usernameTextField.text else {return}
+        
+        
+        let credentials = Authentication(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
+        AuthManager.shared.registerNewUser(with: credentials) { (result) in
+            if result {
+                print("DEBUG: User registered")
+            }
+        }
     }
     
     // MARK: Helpers
@@ -149,7 +162,7 @@ extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigat
         profileImageButton.layer.borderColor = UIColor.white.cgColor
         profileImageButton.layer.borderWidth = 3
         
-        
+        self.profileImage = profileImage.withRenderingMode(.alwaysOriginal)
         self.profileImageButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
         dismiss(animated: true, completion: nil)
     }
