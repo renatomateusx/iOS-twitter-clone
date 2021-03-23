@@ -76,6 +76,13 @@ class LoginViewController: UIViewController {
         
         AuthManager.shared.login(username: email, email: email, password: password) { (loggedIn) in
             if loggedIn {
+                
+                guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow}) else {return}
+                
+                guard let controller = window.rootViewController as? MainTabViewController else {return}
+                
+                controller.authenticAndUserConfigureUI()
+                
                 self.dismiss(animated: true, completion: nil)
             }
         }

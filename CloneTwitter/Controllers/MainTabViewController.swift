@@ -22,9 +22,9 @@ class MainTabViewController: UITabBarController, UIProtocols {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logOut()
+        //logOut()
         authenticAndUserConfigureUI()
-        configureUI()
+        
     }
     
     func logOut(){
@@ -46,6 +46,7 @@ class MainTabViewController: UITabBarController, UIProtocols {
         }
         else {
             print("DEBUG: User is logged in")
+            configureUI()
         }
     }
     
