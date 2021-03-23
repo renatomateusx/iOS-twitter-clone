@@ -94,8 +94,7 @@ class RegistrationViewController: UIViewController {
     
     // MARK: Selectors
     @objc private func didTapLoginButton(){
-//        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func didTapPlusButton(){

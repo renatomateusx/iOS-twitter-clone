@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabViewController: UITabBarController, UIProtocols {
 
@@ -21,7 +22,31 @@ class MainTabViewController: UITabBarController, UIProtocols {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logOut()
+        authenticAndUserConfigureUI()
         configureUI()
+    }
+    
+    func logOut(){
+        do {
+            try Auth.auth().signOut()
+        }
+        catch {
+            print("DEBUG: Error tried logout")
+        }
+    }
+    
+    func authenticAndUserConfigureUI(){
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginViewController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        }
+        else {
+            print("DEBUG: User is logged in")
+        }
     }
     
     internal func configureUI(){

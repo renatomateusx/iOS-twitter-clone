@@ -76,9 +76,9 @@ class LoginViewController: UIViewController {
     
     @objc private func didTapDontHaveAccount(){
         let vc = RegistrationViewController()
-        //navigationController?.pushViewController(vc, animated: true)
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
+        //vc.modalPresentationStyle = .fullScreen
+        //present(vc, animated: true, completion: nil)
     }
     
     // MARK: Helpers
