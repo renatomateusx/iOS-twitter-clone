@@ -114,6 +114,13 @@ class RegistrationViewController: UIViewController {
         AuthManager.shared.registerNewUser(with: credentials) { (result) in
             if result {
                 print("DEBUG: User registered")
+                guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow}) else {return}
+                
+                guard let controller = window.rootViewController as? MainTabViewController else {return}
+                
+                controller.authenticAndUserConfigureUI()
+                
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
