@@ -6,12 +6,38 @@
 //
 
 import UIKit
+import SDWebImage
 
-class FeedViewController: UIViewController, UIProtocols {
+class FeedViewController: UIViewController, UIProtocols, UserDelegate {
 
+    //MARK: Properties
+    private var user: User?
+    
+    //MARK: Delegate
+    func setUser(user: User) {
+        self.user = user
+        print("User was setted")
+        changeUserImage()
+    }
+    
+    private let profileImageView: UIImageView = {        
+        let profileImageView = UIImageView()
+        //profileImageView.backgroundColor = .twitterBlue
+        profileImageView.setDimensions(width: 32, height: 32)
+        profileImageView.layer.cornerRadius = 32/2
+        profileImageView.layer.masksToBounds = true
+        return profileImageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureDelegate()
+    }
+    func configureDelegate(){
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow}) else {return}
+        guard let controller = window.rootViewController as? MainTabViewController else {return}
+        controller.delegateUser = self
     }
     
     internal func configureUI(){
@@ -19,5 +45,13 @@ class FeedViewController: UIViewController, UIProtocols {
         let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         imageView.contentMode = .scaleAspectFit
         navigationItem.titleView = imageView
+      
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
+    }
+    
+    private func changeUserImage(){
+        guard let image = self.user?.profileImage else {return}
+        profileImageView.sd_setImage(with: image, completed: nil)
     }
 }

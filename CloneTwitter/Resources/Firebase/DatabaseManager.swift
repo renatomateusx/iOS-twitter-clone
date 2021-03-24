@@ -41,6 +41,16 @@ public class DatabaseManager {
         }
     }
     
+    func fetchUser(with uuid: String, completion: @escaping (User)-> Void){
+        database.child(uuid).observeSingleEvent(of: .value) { snapshot in
+            guard let dictionary = snapshot.value as? [String: AnyObject] else { completion(User(with: uuid)); return}
+            
+           
+            let user = User(with: uuid, dictionary: dictionary)
+            completion(user)
+        }
+    }
+    
   
 }
 

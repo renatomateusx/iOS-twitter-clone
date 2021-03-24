@@ -9,6 +9,9 @@ import UIKit
 import Firebase
 
 class MainTabViewController: UITabBarController, UIProtocols {
+    
+    //MARK: Properties
+    weak var delegateUser: UserDelegate?
 
     private let addTwitterButton: UIButton = {
        let button = UIButton()
@@ -25,6 +28,12 @@ class MainTabViewController: UITabBarController, UIProtocols {
         //logOut()
         authenticAndUserConfigureUI()
         
+    }
+    
+    func fetchUser(){
+        UserService.shared.fetchUser { user in
+            self.delegateUser?.setUser(user: user)
+        }
     }
     
     func logOut(){
@@ -47,6 +56,7 @@ class MainTabViewController: UITabBarController, UIProtocols {
         else {
             print("DEBUG: User is logged in")
             configureUI()
+            fetchUser()
         }
     }
     
