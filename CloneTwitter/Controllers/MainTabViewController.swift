@@ -11,6 +11,7 @@ import Firebase
 class MainTabViewController: UITabBarController, UIProtocols {
     
     //MARK: Properties
+    var user: User?
     weak var delegateUser: UserDelegate?
 
     private let addTwitterButton: UIButton = {
@@ -32,6 +33,7 @@ class MainTabViewController: UITabBarController, UIProtocols {
     
     func fetchUser(){
         UserService.shared.fetchUser { user in
+            self.user = user
             self.delegateUser?.setUser(user: user)
         }
     }
@@ -99,6 +101,10 @@ class MainTabViewController: UITabBarController, UIProtocols {
 
 extension MainTabViewController {
     @objc private func didTapAddTwitter(){
-        print("Button Tapped")
+        guard let user = user else {return}
+        let controllerTweet = UploadTweetController(user: user)
+        let nav = UINavigationController(rootViewController: controllerTweet)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
 }

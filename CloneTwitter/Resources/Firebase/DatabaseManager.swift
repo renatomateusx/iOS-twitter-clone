@@ -27,7 +27,7 @@ public class DatabaseManager {
     ///     - password: String representing password
     ///     - completion: Async callback for result if database entry succeded
     public func updateUser(with uuid: String, values: [String: Any], completion: @escaping (Bool)-> Void){
-        database.child(uuid).updateChildValues(values) { error, _ in
+        DB_REF.child(uuid).updateChildValues(values) { error, _ in
             if error == nil {
                 //succeded
                 completion(true)
@@ -42,7 +42,7 @@ public class DatabaseManager {
     }
     
     func fetchUser(with uuid: String, completion: @escaping (User)-> Void){
-        database.child(uuid).observeSingleEvent(of: .value) { snapshot in
+        DB_REF.child(uuid).observeSingleEvent(of: .value) { snapshot in
             guard let dictionary = snapshot.value as? [String: AnyObject] else { completion(User(with: uuid)); return}
             
            

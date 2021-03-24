@@ -20,6 +20,13 @@ class FeedViewController: UIViewController, UIProtocols, UserDelegate {
         changeUserImage()
     }
     
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.setDimensions(width: 44, height: 44)
+        return imageView
+    }()
+    
     private let profileImageView: UIImageView = {        
         let profileImageView = UIImageView()
         //profileImageView.backgroundColor = .twitterBlue
@@ -42,10 +49,8 @@ class FeedViewController: UIViewController, UIProtocols, UserDelegate {
     
     internal func configureUI(){
         view.backgroundColor = .systemBackground
-        let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = imageView
-      
+        
+        navigationItem.titleView = logoImageView      
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
     }
