@@ -65,7 +65,7 @@ class MainTabViewController: UITabBarController, UIProtocols {
     internal func configureUI(){
         view.backgroundColor = .systemBackground
         
-        let feed = FeedViewController()
+        let feed = FeedViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let nav1 = setTemplateNavController(image: "home_unselected", rootViewController: feed)
         
         let explore = ExploreViewController()
