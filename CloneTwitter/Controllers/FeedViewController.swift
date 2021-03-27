@@ -12,6 +12,9 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
 
     //MARK: Properties
     private var user: User?
+    private var tweets = [Tweet]() {
+        didSet { collectionView.reloadData()}
+    }
     
     //MARK: Delegate
     func setUser(user: User) {
@@ -68,25 +71,26 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
     //MARK: API
     func fetchTweets(){
         TweetService.shared.fetchTweets { tweets in
-            
+            self.tweets = tweets
         }
     }
     
     //MARK: Selectors
 }
-
+//MARK: UICollectionViewDelegate/DataSource
 extension FeedViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.tweets.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let tweet = tweets[indexPath.row]
        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TweetViewCell.identifier, for: indexPath) as! TweetViewCell
-
+        cell.configure(tweet: tweet)
         return cell
     }
 }
-
+//MARK: UICollectionViewDelegate/FlowLayout
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 120)

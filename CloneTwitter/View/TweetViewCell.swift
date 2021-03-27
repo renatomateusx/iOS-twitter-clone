@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TweetViewCell: UICollectionViewCell  {
     // MARK: Properties
@@ -125,9 +126,10 @@ class TweetViewCell: UICollectionViewCell  {
     // MARK: Helpers
     
     func configure(tweet: Tweet){
-//        self.profileImageView.image = tweet.user.profileImage
-//        self.infoLabel.text = tweet.user.username
-//        self.captionLabel.text = tweet.text
+        let viewM = TweetViewModel(user: tweet.user, tweet: tweet)
+        self.profileImageView.sd_setImage(with: tweet.user.profileImage, completed: nil)
+        self.infoLabel.attributedText = viewM.userInfoText()
+        self.captionLabel.text = tweet.text
     }
     
 }

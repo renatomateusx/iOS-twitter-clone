@@ -32,7 +32,8 @@ class MainTabViewController: UITabBarController, UIProtocols {
     }
     
     func fetchUser(){
-        UserService.shared.fetchUser { user in
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        UserService.shared.fetchUser(uid: uid) { user in
             self.user = user
             self.delegateUser?.setUser(user: user)
         }
