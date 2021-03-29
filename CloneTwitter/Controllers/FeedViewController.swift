@@ -19,7 +19,6 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
     //MARK: Delegate
     func setUser(user: User) {
         self.user = user
-        print("User was setted")
         changeUserImage()
     }
     
@@ -87,6 +86,7 @@ extension FeedViewController {
         let tweet = tweets[indexPath.row]
        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TweetViewCell.identifier, for: indexPath) as! TweetViewCell
         cell.configure(tweet: tweet)
+        cell.delegate = self
         return cell
     }
 }
@@ -95,4 +95,14 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 120)
     }
+}
+
+//MARK: TweetViewCellDelegate
+
+extension FeedViewController: TweetViewCellDelegate {
+    func didTapProfileImage(_ cell: TweetViewCell) {
+        let controller = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }

@@ -8,16 +8,28 @@
 import UIKit
 import SDWebImage
 
+protocol TweetViewCellDelegate: class {
+    func didTapProfileImage(_ cell: TweetViewCell)
+}
+
 class TweetViewCell: UICollectionViewCell  {
     // MARK: Properties
     static let identifier = "TweetViewCell"
+    
+    weak var delegate: TweetViewCellDelegate?
+    
     static let imageSize: CGFloat = 32
-    private let profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let profileImageView = UIImageView()
         profileImageView.backgroundColor = .twitterBlue
-        profileImageView.setDimensions(width: imageSize, height: imageSize)
-        profileImageView.layer.cornerRadius = imageSize/2
+        profileImageView.setDimensions(width: TweetViewCell.imageSize, height: TweetViewCell.imageSize)
+        profileImageView.layer.cornerRadius = TweetViewCell.imageSize/2
         profileImageView.layer.masksToBounds = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapProfileImage))
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tap)
+        
         return profileImageView
     }()
     
@@ -25,6 +37,7 @@ class TweetViewCell: UICollectionViewCell  {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
+        label.text = "Tweet Test"
         return label
     }()
     
@@ -121,6 +134,10 @@ class TweetViewCell: UICollectionViewCell  {
     
     @objc func didTapSharedButton() {
         
+    }
+    
+    @objc func didTapProfileImage(){
+        delegate?.didTapProfileImage(self)
     }
     
     // MARK: Helpers
