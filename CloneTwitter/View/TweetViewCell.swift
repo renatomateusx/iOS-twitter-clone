@@ -15,7 +15,7 @@ protocol TweetViewCellDelegate: class {
 class TweetViewCell: UICollectionViewCell  {
     // MARK: Properties
     static let identifier = "TweetViewCell"
-    
+    var user: User?
     weak var delegate: TweetViewCellDelegate?
     
     static let imageSize: CGFloat = 32
@@ -143,6 +143,7 @@ class TweetViewCell: UICollectionViewCell  {
     // MARK: Helpers
     
     func configure(tweet: Tweet){
+        self.user = tweet.user
         let viewM = TweetViewModel(user: tweet.user, tweet: tweet)
         self.profileImageView.sd_setImage(with: tweet.user.profileImage, completed: nil)
         self.infoLabel.attributedText = viewM.userInfoText()

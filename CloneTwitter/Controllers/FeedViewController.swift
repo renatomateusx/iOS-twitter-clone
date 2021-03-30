@@ -45,6 +45,13 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
         configureDelegate()
         fetchTweets()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     //MARK: Helpers
     func configureDelegate(){
         guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow}) else {return}
@@ -101,7 +108,8 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 
 extension FeedViewController: TweetViewCellDelegate {
     func didTapProfileImage(_ cell: TweetViewCell) {
-        let controller = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        guard let user = cell.user else {return}
+        let controller = ProfileViewController(user: user)
         navigationController?.pushViewController(controller, animated: true)
     }
     

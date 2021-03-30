@@ -7,10 +7,22 @@
 
 import UIKit
 
+protocol ProfileHeaderDelegate: class {
+    func handleDismissal()
+}
+
 class ProfileHeader: UICollectionReusableView {
     // MARK: Properties
     
     static let identifier = "ProfileHeader"
+    
+    private let filterBar = ProfileFilterView()
+    
+    weak var delegate: ProfileHeaderDelegate?
+    
+    var user: User? {
+        didSet { instantiateViewModel()}
+    }
     
     private lazy var containerView: UIView = {
        let view = UIView()
@@ -52,7 +64,7 @@ class ProfileHeader: UICollectionReusableView {
     private let fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.text = "Renato Mateus"
+//        label.text = "Renato Mateus"
         return label
     }()
     
@@ -60,7 +72,7 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .lightGray
-        label.text = "@renatomateusx"
+//        label.text = "@renatomateusx"
         return label
     }()
     
@@ -72,10 +84,35 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
+    private let followingLabel: UILabel = {
+        let label = UILabel()
+        let followTap = UITapGestureRecognizer(target: self, action: #selector(didTapFollowingLabel))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(followTap)
+        label.text = "0 Following"
+        return label
+    }()
+    
+    private let followersLabel: UILabel = {
+        let label = UILabel()
+        let followTap = UITapGestureRecognizer(target: self, action: #selector(didTapFollowersLabel))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(followTap)
+        label.text = "10 Followers"
+        return label
+    }()
+    
+    private let underlineView: UIView = {
+        let view = UIView()
+        view.backgroundColor  = .twitterBlue
+        return view
+    }()
+    
     //MARK: Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        filterBar.delegate = self
         configureView()
     }
     
@@ -107,18 +144,64 @@ class ProfileHeader: UICollectionReusableView {
         
         addSubview(userDetailsStack)
         userDetailsStack.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: padding, paddingRight: padding)
+        
+        let followStack = UIStackView(arrangedSubviews: [followingLabel, followersLabel])
+        followStack.axis = .horizontal
+        followStack.spacing = 8
+        followStack.distribution = .fillEqually
+        
+        addSubview(followStack)
+        followStack.anchor(top: userDetailsStack.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 12)
+        
+        addSubview(filterBar)
+        filterBar.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 50)
+        
+        addSubview(underlineView)
+        underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, width: frame.width / CGFloat(ProfileFilterOptions.allCases.count), height: 2)
     }
     
     
     //MARK: Helpers
     
+    func instantiateViewModel(){
+        guard let user = user else {return}
+        let viewModel = ProfileHeaderViewModel(user: user)
+        
+        followingLabel.attributedText = viewModel.followingString
+        followersLabel.attributedText = viewModel.followersString
+        
+        profileImageView.sd_setImage(with: user.profileImage)
+        editProfileFollowButton.setTitle(viewModel.actionButtonTitle, for: .normal)
+        
+        fullnameLabel.text = user.fullname
+        usernameLabel.text = viewModel.usernameText
+    }
+    
     //MARK: Selectors
     
     @objc func didTapBackButton(){
-        
+        delegate?.handleDismissal()
     }
     
     @objc func didTapEditProfileFollowButton(){
         
+    }
+    
+    @objc func didTapFollowingLabel(){
+        
+    }
+    
+    @objc func didTapFollowersLabel(){
+        
+    }
+}
+//MARK: ProfileFilterViewDelegate
+extension ProfileHeader: ProfileFilterViewDelegate {
+    func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath) {
+        guard let cell = view.collectionView.cellForItem(at: indexPath) as? ProfileFilterCell else {return}
+        let XPosition = cell.frame.origin.x
+        UIView.animate(withDuration: 0.3) {
+            self.underlineView.frame.origin.x = XPosition
+        }
     }
 }
