@@ -9,7 +9,7 @@ import Firebase
 
 ///Profile Images
 let STORAGE_REF = Storage.storage().reference()
-let STORAGE_PROFILE_IMAGES = STORAGE_REF.child("profile_images")
+let STORAGE_PROFILE_IMAGES = STORAGE_REF.child("profile_image")
 
 ///Database
 let DB_REF = Database.database().reference()

@@ -43,6 +43,7 @@ public class AuthManager {
                             
                             DatabaseManager.shared.updateUser(with: uuid, values: credentialsList) { inserted in
                                 if inserted {
+                                    
                                    completion(true)
                                     return
                                 }

@@ -22,8 +22,12 @@ public class StoreManager {
     }
     
     public func uploadImage(with reference: String, data: Data, completion: @escaping(Result<String, Error>) -> Void) {
-        STORAGE_REF.putData(data, metadata: nil) { (meta, error) in
-            STORAGE_REF.downloadURL { (url, error) in
+        let storageRef = STORAGE_PROFILE_IMAGES.child(reference)
+        storageRef.putData(data, metadata: nil) { (meta, error) in
+            if let error = error {
+                print("Error occoured: \(error.localizedDescription)")
+            }
+            storageRef.downloadURL { (url, error) in
                 guard let profileImageUrl = url?.absoluteString else {
                     completion(.failure(IGStorageManagerError.failedToDownload))
                     return

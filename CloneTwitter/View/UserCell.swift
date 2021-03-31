@@ -62,7 +62,9 @@ class UserCell: UITableViewCell {
         stack.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 12)
     }
     
-    func configure(){
-        
+    func configure(with user: User){
+        profileImageView.sd_setImage(with: user.profileImage)
+        usernameLabel.text = user.username
+        fullNameLabel.text = user.fullname
     }
 }
