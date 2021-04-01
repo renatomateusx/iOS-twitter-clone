@@ -23,7 +23,8 @@ struct User {
     let fullname: String
     let username: String
     var profileImage: URL?
-    
+    var isFollowed = false
+    var status: UserRelationStats?
     var isCurrentUser: Bool { Auth.auth().currentUser?.uid == uuid }
     
     init(with uuid: String){
@@ -52,4 +53,9 @@ struct User {
             self.profileImage = url
         }
     }
+}
+
+struct UserRelationStats {
+    var followers: Int
+    var following: Int
 }

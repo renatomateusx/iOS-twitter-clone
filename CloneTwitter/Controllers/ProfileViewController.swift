@@ -10,7 +10,7 @@ import UIKit
 class ProfileViewController: UICollectionViewController {
     
     //MARK: Properties
-    private let user: User
+    private var user: User
     private var tweets = [Tweet]() {
         didSet { collectionView.reloadData()}
     }
@@ -29,6 +29,8 @@ class ProfileViewController: UICollectionViewController {
         super.viewDidLoad()
         configureCollectionView()
         fetchTweets()
+        checkIfUserIsFollowed()
+        fetchUsersStatus()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -44,6 +46,21 @@ class ProfileViewController: UICollectionViewController {
     func fetchTweets(){
         TweetService.shared.fetchTweets(forUser: user) { tweets in
             self.tweets = tweets
+        }
+    }
+    
+    func checkIfUserIsFollowed(){
+        UserService.shared.checkIfUserIsFollowd(uid: user.uuid) { isFollowed in
+            self.user.isFollowed = isFollowed
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func fetchUsersStatus(){
+        UserService.shared.fetchUserStatus(uid: user.uuid) { stats in
+            print("DEBUG: User Status")
+            self.user.status = stats
+            self.collectionView.reloadData()
         }
     }
     
@@ -100,7 +117,32 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 //MARK: ProfileHeaderDelegate
 
 extension ProfileViewController: ProfileHeaderDelegate {
-    func handleDismissal() {
+    func didTapEditProfile(_ header: ProfileHeader) {
+        var buttonTitle:String = "Loading"
+        var isFollowed: Bool = false
+        
+        if user.isCurrentUser {
+            print("DEBUG: Showing the edit button. User can't follow or unfollow himself")
+            return
+        }
+        
+        if user.isFollowed {
+            UserService.shared.unfollowUser(uid: user.uuid) { (err, ref) in
+                self.user.isFollowed  = false
+                header.editProfileFollowButton.setTitle("Follow", for: .normal)
+                self.fetchUsersStatus()
+            }
+        }
+        else {
+            UserService.shared.followUser(uid: user.uuid) { (err, ref) in
+                self.user.isFollowed  = true
+                header.editProfileFollowButton.setTitle("Following", for: .normal)
+                self.fetchUsersStatus()
+            }
+        }
+    }
+    
+    func didTapDismissal() {
         navigationController?.popViewController(animated: true)
     }
     
