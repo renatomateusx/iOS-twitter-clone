@@ -103,7 +103,7 @@ class MainTabViewController: UITabBarController, UIProtocols {
 extension MainTabViewController {
     @objc private func didTapAddTwitter(){
         guard let user = user else {return}
-        let controllerTweet = UploadTweetController(user: user)
+        let controllerTweet = UploadTweetController(user: user, config: .tweet)
         let nav = UINavigationController(rootViewController: controllerTweet)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)

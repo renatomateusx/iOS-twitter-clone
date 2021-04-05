@@ -96,17 +96,33 @@ extension FeedViewController {
         cell.delegate = self
         return cell
     }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tweet = tweets[indexPath.row]
+        let controller = TweetViewController(tweet: tweet)       
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 //MARK: UICollectionViewDelegate/FlowLayout
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 120)
+        let viewModel = TweetViewModel(tweet: tweets[indexPath.row])
+        let captionHeight = viewModel.size(forWidth: view.frame.width).height
+        let plusHeight: CGFloat = 80
+        return CGSize(width: view.frame.width, height: captionHeight + plusHeight)
     }
 }
 
 //MARK: TweetViewCellDelegate
 
 extension FeedViewController: TweetViewCellDelegate {
+    func didTapReplyTweet(_ cell: TweetViewCell) {
+        guard let tweet = cell.tweet else {return}
+        let controller = UploadTweetController(user: tweet.user, config: .reply(tweet))
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
+    }
+    
     func didTapProfileImage(_ cell: TweetViewCell) {
         guard let user = cell.user else {return}
         let controller = ProfileViewController(user: user)

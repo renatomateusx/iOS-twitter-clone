@@ -10,12 +10,14 @@ import SDWebImage
 
 protocol TweetViewCellDelegate: class {
     func didTapProfileImage(_ cell: TweetViewCell)
+    func didTapReplyTweet(_ cell: TweetViewCell)
 }
 
 class TweetViewCell: UICollectionViewCell  {
     // MARK: Properties
     static let identifier = "TweetViewCell"
     var user: User?
+    var tweet: Tweet?
     weak var delegate: TweetViewCellDelegate?
     
     static let imageSize: CGFloat = 32
@@ -105,13 +107,13 @@ class TweetViewCell: UICollectionViewCell  {
         
         addSubview(actiontack)
         actiontack.centerX(inView: self)
-        actiontack.anchor(bottom: bottomAnchor, paddingBottom: 8)
+        actiontack.anchor(top: captionLabel.bottomAnchor, paddingTop: 16)
         
         
         let underlineView = UIView()
         underlineView.backgroundColor = .systemGroupedBackground
         addSubview(underlineView)
-        underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 1)
+        underlineView.anchor(top: actiontack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, height: 1)
     }
     
     required init?(coder: NSCoder) {
@@ -121,7 +123,7 @@ class TweetViewCell: UICollectionViewCell  {
     // MARK: Selectors
     
     @objc func didTapCommentButton() {
-        
+        delegate?.didTapReplyTweet(self)
     }
     
     @objc func didTapRetweetButton() {
@@ -144,6 +146,7 @@ class TweetViewCell: UICollectionViewCell  {
     
     func configure(tweet: Tweet){
         self.user = tweet.user
+        self.tweet = tweet
         let viewM = TweetViewModel(user: tweet.user, tweet: tweet)
         self.profileImageView.sd_setImage(with: tweet.user.profileImage, completed: nil)
         self.infoLabel.attributedText = viewM.userInfoText()

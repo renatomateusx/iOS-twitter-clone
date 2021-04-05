@@ -35,5 +35,40 @@ struct TweetViewModel {
         return title
     }
     
+    var usernameText: String {
+        guard let username = user?.username else { return  String.init()}
+        return "@\(username)"
+    }
+    var headerTimestamp: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a · MM/dd/yyyy"
+        return formatter.string(from: (tweet?.timestamp)!)
+    }
+    
+    var retweetsAttributedString: NSAttributedString? {
+        guard let count = tweet?.retweetCount else { return NSAttributedString()}
+        return attributeText(withValue: count, text: " Retweets")
+    }
+    
+    var likesAttributedString: NSAttributedString? {
+        guard let count = tweet?.likes else { return NSAttributedString()}
+        return attributeText(withValue: count, text: " Likes")
+    }
+    
+    fileprivate func attributeText(withValue value: Int, text: String) -> NSAttributedString {
+        let attributedTitle = NSMutableAttributedString(string: "\(value)", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributedTitle.append(NSAttributedString(string: "\(text)", attributes: [.font: UIFont.boldSystemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
+        return attributedTitle
+    }
+    
+    func size(forWidth width: CGFloat) -> CGSize {
+        let measurementLabel = UILabel()
+        measurementLabel.text = tweet?.text
+        measurementLabel.numberOfLines = 0
+        measurementLabel.lineBreakMode = .byWordWrapping
+        measurementLabel.translatesAutoresizingMaskIntoConstraints = false
+        measurementLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
+        return measurementLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+    }
     
 }
