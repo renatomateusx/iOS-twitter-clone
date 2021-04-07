@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4146B24A261DCE5800D8CB01 /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146B249261DCE5800D8CB01 /* ActionSheet.swift */; };
+		4146B24F261DDAC300D8CB01 /* ActionSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146B24E261DDAC300D8CB01 /* ActionSheetCell.swift */; };
+		4146B254261DE8DC00D8CB01 /* ActionSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146B253261DE8DC00D8CB01 /* ActionSheetViewModel.swift */; };
 		414B40522613EA560032B36B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B40512613EA560032B36B /* UserCell.swift */; };
 		41534274261B676800454A64 /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41534273261B676800454A64 /* TweetViewController.swift */; };
 		41534279261B696800454A64 /* TweetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41534278261B696800454A64 /* TweetHeader.swift */; };
@@ -74,6 +77,9 @@
 		13594537048F322D2AD8DFBF /* Pods_CloneTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloneTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E06ED70CCDDC8789F601509 /* Pods-CloneTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloneTwitter.release.xcconfig"; path = "Target Support Files/Pods-CloneTwitter/Pods-CloneTwitter.release.xcconfig"; sourceTree = "<group>"; };
 		3AAFAF5824C95BCF34830BDE /* Pods-CloneTwitterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloneTwitterTests.debug.xcconfig"; path = "Target Support Files/Pods-CloneTwitterTests/Pods-CloneTwitterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4146B249261DCE5800D8CB01 /* ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
+		4146B24E261DDAC300D8CB01 /* ActionSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetCell.swift; sourceTree = "<group>"; };
+		4146B253261DE8DC00D8CB01 /* ActionSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetViewModel.swift; sourceTree = "<group>"; };
 		414B40512613EA560032B36B /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		41534273261B676800454A64 /* TweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
 		41534278261B696800454A64 /* TweetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetHeader.swift; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 			children = (
 				4182BEDD26092BEF00B1E3ED /* Components.swift */,
 				416B49C8260BC54C002F3D0F /* Constants.swift */,
+				4146B249261DCE5800D8CB01 /* ActionSheet.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 				41A18121260F3BE200FB4344 /* TweetViewModel.swift */,
 				415E1EFB26125A0100171DE7 /* ProfileHeaderViewModel.swift */,
 				4153427D261BC47400454A64 /* UploadTweetViewModel.swift */,
+				4146B253261DE8DC00D8CB01 /* ActionSheetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 				415E1EF62612428500171DE7 /* ProfileFilterCell.swift */,
 				414B40512613EA560032B36B /* UserCell.swift */,
 				41534278261B696800454A64 /* TweetHeader.swift */,
+				4146B24E261DDAC300D8CB01 /* ActionSheetCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -603,16 +612,19 @@
 				41534279261B696800454A64 /* TweetHeader.swift in Sources */,
 				416B49D8260BD990002F3D0F /* TweetService.swift in Sources */,
 				415E1EFC26125A0100171DE7 /* ProfileHeaderViewModel.swift in Sources */,
+				4146B24F261DDAC300D8CB01 /* ActionSheetCell.swift in Sources */,
 				414B40522613EA560032B36B /* UserCell.swift in Sources */,
 				4182BE6626089B0500B1E3ED /* SceneDelegate.swift in Sources */,
 				416B49B7260B53D9002F3D0F /* UserService.swift in Sources */,
 				4182BED926092A2800B1E3ED /* RegistrationViewController.swift in Sources */,
 				416B49CE260BCA47002F3D0F /* UploadTweetController.swift in Sources */,
 				4182BEA326089D2300B1E3ED /* MainTabViewController.swift in Sources */,
+				4146B254261DE8DC00D8CB01 /* ActionSheetViewModel.swift in Sources */,
 				41534274261B676800454A64 /* TweetViewController.swift in Sources */,
 				4153427E261BC47400454A64 /* UploadTweetViewModel.swift in Sources */,
 				4182BEB126089DE800B1E3ED /* ViewExtensions.swift in Sources */,
 				4182BEC026089E2E00B1E3ED /* NotificationsController.swift in Sources */,
+				4146B24A261DCE5800D8CB01 /* ActionSheet.swift in Sources */,
 				4182BEB626089E0100B1E3ED /* FeedViewController.swift in Sources */,
 				419240EE2611492D005B8E00 /* ProfileViewController.swift in Sources */,
 				41A18122260F3BE200FB4344 /* TweetViewModel.swift in Sources */,

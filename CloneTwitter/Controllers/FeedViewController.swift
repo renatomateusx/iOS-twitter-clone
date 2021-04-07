@@ -78,6 +78,17 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
     func fetchTweets(){
         TweetService.shared.fetchTweets { tweets in
             self.tweets = tweets
+            self.checkIfUserLikedTweets(self.tweets)
+        }
+    }
+    
+    func checkIfUserLikedTweets(_ tweets: [Tweet]){
+        for (index, tweet) in tweets.enumerated() {
+            TweetService.shared.checkIfUserLikedTweet(tweet) { didLiked in
+                guard didLiked == true else {return}
+                
+                self.tweets[index].didLiked = true
+            }
         }
     }
     
@@ -115,6 +126,19 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 //MARK: TweetViewCellDelegate
 
 extension FeedViewController: TweetViewCellDelegate {
+    func didTapLikeTweet(_ cell: TweetViewCell) {
+        guard let tweet = cell.tweet else {return}
+       
+        print("DEBUG: Did liked tweet \(cell.tweet?.didLiked)")
+        TweetService.shared.likeTweet(tweet: tweet) { (err, ref) in
+            guard var tweet = cell.tweet else {return}
+            tweet.didLiked.toggle()
+            let likes = tweet.didLiked ? tweet.likes - 1 : tweet.likes + 1
+            tweet.likes = likes
+            cell.configure(tweet: tweet)
+        }
+    }
+    
     func didTapReplyTweet(_ cell: TweetViewCell) {
         guard let tweet = cell.tweet else {return}
         let controller = UploadTweetController(user: tweet.user, config: .reply(tweet))

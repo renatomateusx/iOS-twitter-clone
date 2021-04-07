@@ -11,6 +11,7 @@ import SDWebImage
 protocol TweetViewCellDelegate: class {
     func didTapProfileImage(_ cell: TweetViewCell)
     func didTapReplyTweet(_ cell: TweetViewCell)
+    func didTapLikeTweet(_ cell: TweetViewCell)
 }
 
 class TweetViewCell: UICollectionViewCell  {
@@ -131,7 +132,7 @@ class TweetViewCell: UICollectionViewCell  {
     }
     
     @objc func didTapLikeButton() {
-        
+        delegate?.didTapLikeTweet(self)
     }
     
     @objc func didTapSharedButton() {
@@ -151,6 +152,8 @@ class TweetViewCell: UICollectionViewCell  {
         self.profileImageView.sd_setImage(with: tweet.user.profileImage, completed: nil)
         self.infoLabel.attributedText = viewM.userInfoText()
         self.captionLabel.text = tweet.text
+        likeButton.tintColor = viewM.likeButtonTintColor
+        likeButton.setImage(viewM.likeButtonImage, for: .normal)
     }
     
 }

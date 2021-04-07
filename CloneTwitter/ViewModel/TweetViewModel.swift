@@ -55,6 +55,16 @@ struct TweetViewModel {
         return attributeText(withValue: count, text: " Likes")
     }
     
+    var likeButtonTintColor: UIColor {
+        guard let tweet = tweet else {return .lightGray}
+        return tweet.didLiked ? .red : .lightGray
+    }
+    var likeButtonImage: UIImage {
+        guard let tweet = tweet else {return UIImage(named: "like")!}
+        let imageName = tweet.didLiked ? "like_filled" : "like"
+        return UIImage(named: imageName)!
+    }
+    
     fileprivate func attributeText(withValue value: Int, text: String) -> NSAttributedString {
         let attributedTitle = NSMutableAttributedString(string: "\(value)", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
         attributedTitle.append(NSAttributedString(string: "\(text)", attributes: [.font: UIFont.boldSystemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
@@ -70,5 +80,7 @@ struct TweetViewModel {
         measurementLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
         return measurementLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }
+    
+    
     
 }
