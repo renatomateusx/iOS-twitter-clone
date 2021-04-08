@@ -414,8 +414,8 @@
             filePath = "CloneTwitter/Controllers/FeedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "didTapProfileImage(_:)"
             landmarkType = "7">
          </BreakpointContent>

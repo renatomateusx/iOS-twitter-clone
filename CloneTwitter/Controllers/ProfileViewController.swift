@@ -118,8 +118,6 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 
 extension ProfileViewController: ProfileHeaderDelegate {
     func didTapEditProfile(_ header: ProfileHeader) {
-        var buttonTitle:String = "Loading"
-        var isFollowed: Bool = false
         
         if user.isCurrentUser {
             print("DEBUG: Showing the edit button. User can't follow or unfollow himself")
@@ -138,6 +136,8 @@ extension ProfileViewController: ProfileHeaderDelegate {
                 self.user.isFollowed  = true
                 header.editProfileFollowButton.setTitle("Following", for: .normal)
                 self.fetchUsersStatus()
+                
+                NotificationService.shared.uploadNotification(type: .follow, user: self.user)
             }
         }
     }
