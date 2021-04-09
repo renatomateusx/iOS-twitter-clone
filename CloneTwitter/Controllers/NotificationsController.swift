@@ -8,7 +8,7 @@
 import UIKit
 
 class NotificationsViewController: UITableViewController {
-
+    
     
     //MARK: Properties
     private var notifications = [Notification]() {
@@ -47,12 +47,12 @@ class NotificationsViewController: UITableViewController {
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
     }
-
+    
     //MARK: Selectors
     @objc func handleRefresh(){
         fetchNotifications()
     }
-   
+    
     
     //MARK: API
     func fetchNotifications(){
@@ -83,7 +83,7 @@ extension NotificationsViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NotificationViewCell.identifier, for: indexPath) as! NotificationViewCell
-       
+        
         cell.configure(notification: notifications[indexPath.row])
         cell.delegate = self
         return cell
@@ -102,10 +102,17 @@ extension NotificationsViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
+    
 }
 
 //MARK: NotificationsViewController/NotificationViewCellDelegate
 extension NotificationsViewController: NotificationViewCellDelegate{
+    
+    func didTapProfileImage(_ cell: NotificationViewCell) {
+        guard let user = cell.notification?.user else {return}
+        let controller = ProfileViewController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
     func didTapFollowUnFollowButton(_ cell: NotificationViewCell) {
         guard var notification = cell.notification else {return}
@@ -122,12 +129,4 @@ extension NotificationsViewController: NotificationViewCellDelegate{
             }
         }
     }
-    
-    func didTapProfileImage(_ cell: NotificationViewCell) {
-        guard let user = cell.notification?.user else {return}
-        let controller = ProfileViewController(user: user)
-        navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    
 }

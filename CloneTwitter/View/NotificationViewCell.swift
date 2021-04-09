@@ -22,20 +22,14 @@ class NotificationViewCell: UITableViewCell {
     static let imageSize: CGFloat = 40
     private lazy var profileImageView: UIImageView = {
         let profileImageView = UIImageView()
-        profileImageView.contentMode = .scaleAspectFit
         profileImageView.backgroundColor = .twitterBlue
         profileImageView.setDimensions(width: TweetViewCell.imageSize, height: TweetViewCell.imageSize)
         profileImageView.layer.cornerRadius = TweetViewCell.imageSize/2
-        profileImageView.layer.masksToBounds = true
-        profileImageView.backgroundColor = .twitterBlue
+        profileImageView.clipsToBounds = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapProfileImage))
-        tap.cancelsTouchesInView = true
-        tap.numberOfTouchesRequired = 1
-        
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(tap)
-       
         
         return profileImageView
     }()
@@ -76,12 +70,13 @@ class NotificationViewCell: UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [profileImageView, notificationlabel])
         stack.spacing = 8
         stack.alignment = .center
+        stack.axis = .horizontal
         
-        addSubview(stack)
+        contentView.addSubview(stack)
         stack.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 12)
         stack.anchor(right: rightAnchor, paddingRight: 12)
         
-        addSubview(followButton)
+        contentView.addSubview(followButton)
         followButton.centerY(inView: self)
         followButton.setDimensions(width: 92, height: 32)
         followButton.layer.cornerRadius = 32 / 2
