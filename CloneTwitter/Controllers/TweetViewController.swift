@@ -32,12 +32,23 @@ class TweetViewController: UICollectionViewController {
         configureUI()
         fetchReplies()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.isHidden = false
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     //MARK: Helpers
     func configureUI(){
         collectionView.backgroundColor = .systemBackground
         collectionView.register(TweetViewCell.self, forCellWithReuseIdentifier: TweetViewCell.identifier)
         collectionView.register(TweetHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TweetHeader.identifier)
+        
+        guard let tabHeight = tabBarController?.tabBar.frame.height else {return}
+        collectionView.contentInset.bottom = tabHeight
     
     }
     
@@ -83,17 +94,17 @@ extension TweetViewController {
 
 extension TweetViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 320)
+        
+        let viewModel = TweetViewModel(tweet: self.tweet)
+        let captionHeight = viewModel.size(forWidth: view.frame.width).height
+        let plusHeight: CGFloat = 260
+        return CGSize(width: view.frame.width, height: captionHeight + plusHeight)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       
-        let viewModel = TweetViewModel(tweet: tweet)
-        let height = viewModel.size(forWidth: view.frame.width).height
-        var plusHeight: CGFloat = -28
-        if indexPath.row == replies.count - 1 {
-            plusHeight = 80
-        }
-        return CGSize(width: view.frame.width, height: height + plusHeight)
+        let viewModel = TweetViewModel(tweet: self.tweet)
+        let captionHeight = viewModel.size(forWidth: view.frame.width).height
+        let plusHeight: CGFloat = 72
+        return CGSize(width: view.frame.width, height: 120)
     }
 }
 

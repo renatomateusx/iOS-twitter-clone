@@ -10,6 +10,7 @@ import UIKit
 protocol ProfileHeaderDelegate: class {
     func didTapDismissal()
     func didTapEditProfile(_ header: ProfileHeader)
+    func didSelect(filter: ProfileFilterOptions)
 }
 
 class ProfileHeader: UICollectionReusableView {
@@ -103,11 +104,7 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
-    private let underlineView: UIView = {
-        let view = UIView()
-        view.backgroundColor  = .twitterBlue
-        return view
-    }()
+   
     
     //MARK: Lifecycle
     
@@ -157,8 +154,7 @@ class ProfileHeader: UICollectionReusableView {
         addSubview(filterBar)
         filterBar.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 50)
         
-        addSubview(underlineView)
-        underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, width: frame.width / CGFloat(ProfileFilterOptions.allCases.count), height: 2)
+
     }
     
     
@@ -198,11 +194,9 @@ class ProfileHeader: UICollectionReusableView {
 }
 //MARK: ProfileFilterViewDelegate
 extension ProfileHeader: ProfileFilterViewDelegate {
-    func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath) {
-        guard let cell = view.collectionView.cellForItem(at: indexPath) as? ProfileFilterCell else {return}
-        let XPosition = cell.frame.origin.x
-        UIView.animate(withDuration: 0.3) {
-            self.underlineView.frame.origin.x = XPosition
-        }
+    func filterView(_ view: ProfileFilterView, didSelect index: Int) {
+        guard let filter = ProfileFilterOptions(rawValue: index) else {return}
+        
+        delegate?.didSelect(filter: filter)       
     }
 }

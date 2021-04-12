@@ -21,7 +21,7 @@ class TweetViewCell: UICollectionViewCell  {
     var tweet: Tweet?
     weak var delegate: TweetViewCellDelegate?
     
-    static let imageSize: CGFloat = 32
+    static let imageSize: CGFloat = 48
     private lazy var profileImageView: UIImageView = {
         let profileImageView = UIImageView()
         profileImageView.backgroundColor = .twitterBlue
@@ -34,6 +34,13 @@ class TweetViewCell: UICollectionViewCell  {
         profileImageView.addGestureRecognizer(tap)
         
         return profileImageView
+    }()
+    
+    private let replyLabel: UILabel = {
+       let label = UILabel()
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
     }()
     
     private let captionLabel: UILabel = {
@@ -87,20 +94,30 @@ class TweetViewCell: UICollectionViewCell  {
         super.init(frame: frame)
         backgroundColor = .systemBackground
         
-        addSubview(profileImageView)
-        profileImageView.anchor(top: topAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 8)
-        
-        let stack = UIStackView(arrangedSubviews: [infoLabel, captionLabel])
+        let captionStack = UIStackView(arrangedSubviews: [infoLabel, captionLabel])
        
+        captionStack.axis = .vertical
+        captionStack.distribution = .fillProportionally
+        captionStack.spacing = 4
+        
+        let imageCaptionStack = UIStackView(arrangedSubviews: [profileImageView, captionStack])
+        imageCaptionStack.distribution = .fillProportionally
+        imageCaptionStack.spacing = 12
+        imageCaptionStack.alignment = .center
+       
+        
+        let stack = UIStackView(arrangedSubviews: [replyLabel, imageCaptionStack])
         stack.axis = .vertical
+        stack.spacing = 8
         stack.distribution = .fillProportionally
-        stack.spacing = 4
+        
         addSubview(stack)
-        stack.anchor(top: profileImageView.topAnchor, left: profileImageView.rightAnchor, right: rightAnchor, paddingLeft: 12, paddingRight: 12)
+        stack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingRight: 12)
         
-        
+        infoLabel.font = UIFont.systemFont(ofSize: 14)
         infoLabel.text = "Renato Moura"
         captionLabel.text =  "Testezin"
+        replyLabel.isHidden = true
         
         let actiontack = UIStackView(arrangedSubviews: [commentButton, retweetButton, likeButton, sharedButton])
         actiontack.axis = .horizontal
@@ -108,13 +125,13 @@ class TweetViewCell: UICollectionViewCell  {
         
         addSubview(actiontack)
         actiontack.centerX(inView: self)
-        actiontack.anchor(top: captionLabel.bottomAnchor, paddingTop: 16)
+        actiontack.anchor(bottom: bottomAnchor, paddingBottom: 8)
         
         
         let underlineView = UIView()
         underlineView.backgroundColor = .systemGroupedBackground
         addSubview(underlineView)
-        underlineView.anchor(top: actiontack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, height: 1)
+        underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 1)
     }
     
     required init?(coder: NSCoder) {
@@ -154,6 +171,9 @@ class TweetViewCell: UICollectionViewCell  {
         self.captionLabel.text = tweet.text
         likeButton.tintColor = viewM.likeButtonTintColor
         likeButton.setImage(viewM.likeButtonImage, for: .normal)
+        
+        replyLabel.isHidden = viewM.shouldHideReplyLabel
+        replyLabel.text = viewM.replyText
     }
     
 }
