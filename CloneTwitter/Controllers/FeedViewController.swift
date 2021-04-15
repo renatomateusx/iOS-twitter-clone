@@ -67,6 +67,11 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
         navigationItem.titleView = logoImageView      
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
+        
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
     
     private func changeUserImage(){
@@ -76,23 +81,31 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
     
     //MARK: API
     func fetchTweets(){
+        collectionView.refreshControl?.beginRefreshing()
         TweetService.shared.fetchTweets { tweets in
             self.tweets = tweets
-            self.checkIfUserLikedTweets(self.tweets)
+            self.tweets = tweets.sorted(by: { $0.timestamp > $1.timestamp })
+            self.checkIfUserLikedTweets()
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
     
-    func checkIfUserLikedTweets(_ tweets: [Tweet]){
-        for (index, tweet) in tweets.enumerated() {
+    func checkIfUserLikedTweets(){
+        self.tweets.forEach { tweet in
             TweetService.shared.checkIfUserLikedTweet(tweet) { didLiked in
                 guard didLiked == true else {return}
-                
-                self.tweets[index].didLiked = true
+                if let index = self.tweets.firstIndex(where: { $0.tweetID == tweet.tweetID}) {
+                    self.tweets[index].didLiked = true
+                }
             }
         }
     }
     
     //MARK: Selectors
+    
+    @objc func handleRefresh(){
+        fetchTweets()
+    }
 }
 //MARK: UICollectionViewDelegate/DataSource
 extension FeedViewController {

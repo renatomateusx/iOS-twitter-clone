@@ -222,10 +222,10 @@
             filePath = "CloneTwitter/Controllers/FeedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -254,10 +254,10 @@
             filePath = "CloneTwitter/Controllers/FeedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -343,70 +343,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5823331B-1321-4DC8-9BCA-AE439AFCDE0D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CloneTwitter/API/TweetService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "fetchTweets(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9F055270-DE5E-4CE0-B0CE-6A7DF5D66C75"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CloneTwitter/API/TweetService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "fetchTweets(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9F055270-DE5E-4CE0-B0CE-6A7DF5D66C75 - e7443cee7d8ac09c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in CloneTwitter.TweetService.fetchTweets(completion: (Swift.Array&lt;CloneTwitter.Tweet&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CloneTwitter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/renatomateus/Documents/ios-projects/CloneTwitter/CloneTwitter/API/TweetService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "1179">
-               </Location>
-               <Location
-                  uuid = "9F055270-DE5E-4CE0-B0CE-6A7DF5D66C75 - 4fd8280915d4e14c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (CloneTwitter.User) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in CloneTwitter.TweetService.fetchTweets(completion: (Swift.Array&lt;CloneTwitter.Tweet&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CloneTwitter"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/renatomateus/Documents/ios-projects/CloneTwitter/CloneTwitter/API/TweetService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "275">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "CE529430-33E2-4C8B-AA19-BD744BF5D34B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -414,10 +350,10 @@
             filePath = "CloneTwitter/Controllers/FeedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "didTapProfileImage(_:)"
-            landmarkType = "7">
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1166,8 +1102,8 @@
             filePath = "CloneTwitter/API/TweetService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "fetchTweets(forUser:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1182,8 +1118,8 @@
             filePath = "CloneTwitter/API/TweetService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "fetchTweets(forUser:completion:)"
             landmarkType = "7">
             <Locations>
@@ -1230,8 +1166,8 @@
             filePath = "CloneTwitter/API/TweetService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "fetchTweets(forUser:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1246,8 +1182,8 @@
             filePath = "CloneTwitter/API/TweetService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "fetchTweets(forUser:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1278,8 +1214,8 @@
             filePath = "CloneTwitter/View/ProfileHeader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "filterView(_:didSelect:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1294,8 +1230,8 @@
             filePath = "CloneTwitter/API/TweetService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "fetchReplies(forUser:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1374,8 +1310,8 @@
             filePath = "CloneTwitter/API/TweetService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "fetchReplies(forUser:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1390,8 +1326,8 @@
             filePath = "CloneTwitter/API/TweetService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "fetchReplies(forUser:completion:)"
             landmarkType = "7">
          </BreakpointContent>

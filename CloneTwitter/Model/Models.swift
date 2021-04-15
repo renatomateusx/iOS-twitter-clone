@@ -20,12 +20,13 @@ struct Authentication {
 struct User {
     let uuid: String
     let email: String
-    let fullname: String
-    let username: String
+    var fullname: String
+    var username: String
     var profileImage: URL?
     var isFollowed = false
     var status: UserRelationStats?
     var isCurrentUser: Bool { Auth.auth().currentUser?.uid == uuid }
+    var bio: String?
     
     init(with uuid: String){
         self.uuid = uuid
@@ -41,11 +42,12 @@ struct User {
         let email = dictionary["email"] as? String ?? ""
         let username = dictionary["username"] as? String ?? ""
         let fullname = dictionary["fullname"] as? String ?? ""
-        
+        let bio = dictionary["bio"] as? String ?? ""
         
         self.email = email
         self.username = username
         self.fullname = fullname
+        self.bio = bio
         
         self.profileImage = URL(string: String.init())
         if let profileImage = dictionary["profileImageUrl"] as? String {

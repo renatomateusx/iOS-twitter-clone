@@ -168,7 +168,11 @@ extension ProfileViewController: ProfileHeaderDelegate {
     func didTapEditProfile(_ header: ProfileHeader) {
         
         if user.isCurrentUser {
-            print("DEBUG: Showing the edit button. User can't follow or unfollow himself")
+            let controller = EditProfileViewController(user: user)
+            controller.delegate = self
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true, completion: nil)
             return
         }
         
@@ -192,6 +196,16 @@ extension ProfileViewController: ProfileHeaderDelegate {
     
     func didTapDismissal() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    
+}
+//MARK: EditProfileViewControllerDelegate
+extension ProfileViewController: EditProfileViewControllerDelegate{
+    func controller(_ controller: EditProfileViewController, wantsToUpdate user: User) {
+        controller.dismiss(animated: true, completion: nil)
+        self.user = user
+        self.collectionView.reloadData()
     }
     
     
