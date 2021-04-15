@@ -1,4 +1,5 @@
 PODS:
+  - ActiveLabel (1.1.0)
   - Appirater (2.3.1)
   - Firebase/Analytics (7.7.0):
     - Firebase/Core
@@ -99,6 +100,7 @@ PODS:
   - SDWebImage/Core (5.10.4)
 
 DEPENDENCIES:
+  - ActiveLabel
   - Appirater
   - Firebase/Analytics
   - Firebase/Auth
@@ -110,6 +112,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ActiveLabel
     - Appirater
     - Firebase
     - FirebaseAnalytics
@@ -130,6 +133,7 @@ SPEC REPOS:
     - SDWebImage
 
 SPEC CHECKSUMS:
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Appirater: 44a4651f7912a17dc906b655f0c215d5bb768b84
   Firebase: cd2ab85eec8170dc260186159f21072ecb679ad5
   FirebaseAnalytics: f3f8f75de34fe04141a69bb1c4bd7e24a80178e1
@@ -149,6 +153,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
 
-PODFILE CHECKSUM: 7332a7279b290011dc667241881eeb02df01ad3b
+PODFILE CHECKSUM: d307758c2128b9ad6beb3e59c73410ac76d32d39
 
 COCOAPODS: 1.10.0

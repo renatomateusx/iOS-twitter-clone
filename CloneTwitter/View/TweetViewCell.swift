@@ -7,11 +7,13 @@
 
 import UIKit
 import SDWebImage
+import ActiveLabel
 
 protocol TweetViewCellDelegate: class {
     func didTapProfileImage(_ cell: TweetViewCell)
     func didTapReplyTweet(_ cell: TweetViewCell)
     func didTapLikeTweet(_ cell: TweetViewCell)
+    func didTapUsername(withUsername username:String)
 }
 
 class TweetViewCell: UICollectionViewCell  {
@@ -36,18 +38,21 @@ class TweetViewCell: UICollectionViewCell  {
         return profileImageView
     }()
     
-    private let replyLabel: UILabel = {
-       let label = UILabel()
+    private let replyLabel: ActiveLabel = {
+       let label = ActiveLabel()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 12)
+        label.mentionColor = .twitterBlue
         return label
     }()
     
-    private let captionLabel: UILabel = {
-       let label = UILabel()
+    private let captionLabel: ActiveLabel = {
+       let label = ActiveLabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
         label.text = "Tweet Test"
+        label.mentionColor = .twitterBlue
+        label.hashtagColor = .twitterBlue
         return label
     }()
     
@@ -132,6 +137,8 @@ class TweetViewCell: UICollectionViewCell  {
         underlineView.backgroundColor = .systemGroupedBackground
         addSubview(underlineView)
         underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 1)
+        
+        configureMentionHandler()
     }
     
     required init?(coder: NSCoder) {
@@ -174,6 +181,11 @@ class TweetViewCell: UICollectionViewCell  {
         
         replyLabel.isHidden = viewM.shouldHideReplyLabel
         replyLabel.text = viewM.replyText
+    }
+    func configureMentionHandler(){
+        captionLabel.handleMentionTap { username in
+            self.delegate?.didTapUsername(withUsername: username)
+        }
     }
     
 }
