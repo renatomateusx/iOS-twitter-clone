@@ -26,7 +26,6 @@ class MainTabViewController: UITabBarController, UIProtocols {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //logOut()
         authenticAndUserConfigureUI()
         
     }
@@ -37,16 +36,8 @@ class MainTabViewController: UITabBarController, UIProtocols {
             self.user = user
             self.delegateUser?.setUser(user: user)
         }
-    }
+    }  
     
-    func logOut(){
-        do {
-            try Auth.auth().signOut()
-        }
-        catch {
-            print("DEBUG: Error tried logout")
-        }
-    }
     
     func authenticAndUserConfigureUI(){
         if Auth.auth().currentUser == nil {

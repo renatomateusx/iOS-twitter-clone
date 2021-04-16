@@ -66,6 +66,9 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
         
         navigationItem.titleView = logoImageView      
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapLeftButtonImageView))
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tap)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
         
         
@@ -73,6 +76,8 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView.refreshControl = refreshControl
     }
+    
+   
     
     private func changeUserImage(){
         guard let image = self.user?.profileImage else {return}
@@ -83,7 +88,7 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
     func fetchTweets(){
         collectionView.refreshControl?.beginRefreshing()
         TweetService.shared.fetchTweets { tweets in
-            self.tweets = tweets
+            //self.tweets = tweets
             self.tweets = tweets.sorted(by: { $0.timestamp > $1.timestamp })
             self.checkIfUserLikedTweets()
             self.collectionView.refreshControl?.endRefreshing()
@@ -105,6 +110,13 @@ class FeedViewController: UICollectionViewController, UIProtocols, UserDelegate 
     
     @objc func handleRefresh(){
         fetchTweets()
+    }
+    
+    @objc func didTapLeftButtonImageView(){
+        guard let user = user else {return}
+        let controller = ProfileViewController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
+        
     }
 }
 //MARK: UICollectionViewDelegate/DataSource

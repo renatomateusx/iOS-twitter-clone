@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UICollectionViewController {
     
@@ -202,6 +203,20 @@ extension ProfileViewController: ProfileHeaderDelegate {
 }
 //MARK: EditProfileViewControllerDelegate
 extension ProfileViewController: EditProfileViewControllerDelegate{
+    func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginViewController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        }
+        catch {
+            print("DEBUG: Error tried logout")
+        }
+    }
+    
     func controller(_ controller: EditProfileViewController, wantsToUpdate user: User) {
         controller.dismiss(animated: true, completion: nil)
         self.user = user
