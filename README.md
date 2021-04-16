@@ -21,5 +21,28 @@ You must to know that the code needs was made on MVC first and then, got started
 
 # Preview Project
 
+>> LogIn
 ![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/1.png)
 
+>> SignIn
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/2.png)
+
+>> Feed Tweets
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/3.png)
+
+>>Profile
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/3.1.png)
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/3.2.png)
+
+>>Tweet Explore
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/4.png)    
+
+>>Tweet Replies
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/4.1.png)
+
+>>Notifications
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/5.png)
+
+>>Edit Profile
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/6.png)
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/6.1.png)
