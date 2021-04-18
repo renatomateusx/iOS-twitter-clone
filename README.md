@@ -21,6 +21,12 @@ You must to know that the code needs was made on MVC first and then, got started
 
 # Preview Project
 
+<p align="center">
+  <img src="https://github.com/renatomateusx/iOS-twitter-clone/blob/master/1.png" width="350" title="Login">
+  <img src="https://github.com/renatomateusx/iOS-twitter-clone/blob/master/2.png" width="350" alt="SignIn">
+</p>
+
+
 >> LogIn
 ![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/1.png)
 
