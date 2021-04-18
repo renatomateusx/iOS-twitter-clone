@@ -46,3 +46,7 @@ You must to know that the code needs was made on MVC first and then, got started
 >>Edit Profile
 ![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/6.png)
 ![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/6.1.png)
+
+>>Messages
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/7.png)
+![alt tag](https://github.com/renatomateusx/iOS-twitter-clone/blob/master/7.1.png)
