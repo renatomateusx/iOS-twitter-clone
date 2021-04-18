@@ -13,7 +13,9 @@ class MainTabViewController: UITabBarController, UIProtocols {
     //MARK: Properties
     var user: User?
     weak var delegateUser: UserDelegate?
-
+    private var buttonConfig: ActionButtonConfiguration = .tweet
+    
+    
     private let addTwitterButton: UIButton = {
        let button = UIButton()
         button.tintColor = .white
@@ -56,11 +58,12 @@ class MainTabViewController: UITabBarController, UIProtocols {
     
     internal func configureUI(){
         view.backgroundColor = .systemBackground
+        self.delegate = self
         
         let feed = FeedViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let nav1 = setTemplateNavController(image: "home_unselected", rootViewController: feed)
         
-        let explore = ExploreViewController()
+        let explore = ExploreViewController(withConfig: .userSearch)
         let nav2 = setTemplateNavController(image: "search_unselected", rootViewController: explore)
         
         let notifications = NotificationsViewController()
@@ -93,10 +96,25 @@ class MainTabViewController: UITabBarController, UIProtocols {
 
 extension MainTabViewController {
     @objc private func didTapAddTwitter(){
-        guard let user = user else {return}
-        let controllerTweet = UploadTweetController(user: user, config: .tweet)
-        let nav = UINavigationController(rootViewController: controllerTweet)
+        let controller: UIViewController
+        switch buttonConfig {
+        case .message :
+            controller = ExploreViewController(withConfig: .messages)
+        case .tweet:
+            guard let user = user else {return}
+            controller = UploadTweetController(user: user, config: .tweet)
+        }
+        let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
+    }
+}
+
+extension MainTabViewController: UITabBarControllerDelegate{
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let index = viewControllers?.firstIndex(of: viewController)
+        let image = index == 3 ? #imageLiteral(resourceName: "mail") : #imageLiteral(resourceName: "new_tweet")
+        self.addTwitterButton.setImage(image, for: .normal)
+        buttonConfig = index == 3 ? .message : .tweet
     }
 }

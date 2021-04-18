@@ -7,9 +7,13 @@
 
 import UIKit
 
+
 class ExploreViewController: UITableViewController, UIProtocols {
 
     //MARK: Properties
+    
+    private let config: ExploreConrollerConfiguration
+    
     private var users = [User]() {
         didSet {tableView.reloadData()}
     }
@@ -24,6 +28,16 @@ class ExploreViewController: UITableViewController, UIProtocols {
     private let searchController = UISearchController(searchResultsController: nil)
     
     //MARK: Lifecycle
+    
+    init(withConfig config: ExploreConrollerConfiguration){
+        self.config = config
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,10 +63,14 @@ class ExploreViewController: UITableViewController, UIProtocols {
     //MARK: Helpers
     func configureUI(){
         view.backgroundColor = .systemBackground
-        navigationItem.title = "Explore"
+        navigationItem.title = config == .messages ? "New Message" : "Explore"
         tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.identifier)
         tableView.rowHeight = 60
         tableView.separatorStyle = .none
+        
+        if config == .messages{
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelMessagesButton))
+        }
     }
     
     func configureSearchUI(){
@@ -65,6 +83,9 @@ class ExploreViewController: UITableViewController, UIProtocols {
     }
     
     //MARK: Selectors
+    @objc func didTapCancelMessagesButton(){
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 

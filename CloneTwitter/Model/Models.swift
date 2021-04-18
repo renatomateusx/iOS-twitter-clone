@@ -61,3 +61,13 @@ struct UserRelationStats {
     var followers: Int
     var following: Int
 }
+
+enum ActionButtonConfiguration {
+    case tweet
+    case message
+}
+
+enum ExploreConrollerConfiguration {
+    case messages
+    case userSearch
+}
